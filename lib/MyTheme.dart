@@ -25,5 +25,12 @@ class MyTheme {
       titleSmall: TextStyle(
           fontSize: 20, fontWeight: FontWeight.bold, color: blackColor),
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+      backgroundColor: primaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+    )),
   );
 }
