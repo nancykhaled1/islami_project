@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MoshafTab extends StatelessWidget {
+class HadethTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

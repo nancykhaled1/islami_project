@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islami_project/home/moshaf/moshaf.dart';
 import 'package:islami_project/home/quran/quran.dart';
 import 'package:islami_project/home/radio/radio.dart';
 import 'package:islami_project/home/sebha/sebha.dart';
+
+import 'Hadeth/moshaf.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeNam = 'home-screen';
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     QuranTab(),
-    MoshafTab(),
+    HadethTab(),
     RadioTab(),
     SebhaTab(),
   ];
@@ -49,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               items: [
                 BottomNavigationBarItem(
-                    icon: ImageIcon(AssetImage('assets/images/quran.png')),
-                    label: 'Quran'),
-                BottomNavigationBarItem(
                     icon:
                         ImageIcon(AssetImage('assets/images/moshaf_blue.png')),
-                    label: 'Moshaf'),
+                    label: 'Quran'),
+                BottomNavigationBarItem(
+                    icon: ImageIcon(AssetImage('assets/images/quran.png')),
+                    label: 'Hadeth'),
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/radio_blue.png')),
                     label: 'Radio'),
