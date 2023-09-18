@@ -49,6 +49,9 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
                 onTap: () {
                   setState(() {
                     angle += 10;
+                    count++;
+                    bottomClick();
+                    setState(() {});
                   });
                 },
                 child: AnimatedBuilder(
@@ -88,22 +91,22 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  count++;
-                  bottomClick();
-                  setState(() {});
-                },
-                child: Text('${bottomName[index]}',
-                    style: provider.appTheme == ThemeMode.light
-                        ? Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(color: MyTheme.whiteColor)
-                        : Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(color: MyTheme.blackColor))),
+            Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(25)),
+              child: Text('${bottomName[index]}',
+                  style: provider.appTheme == ThemeMode.light
+                      ? Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(color: MyTheme.whiteColor)
+                      : Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(color: MyTheme.blackColor)),
+            ),
           ],
         ),
       ),
