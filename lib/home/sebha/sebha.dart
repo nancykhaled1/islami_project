@@ -1,7 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_project/MyTheme.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_config_provider.dart';
 
 class SebhaTab extends StatefulWidget {
   static const routeNam = 'sebha-screen';
@@ -34,12 +38,11 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       body: Center(
         child: Column(
-          /// mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ///  Image(image: AssetImage('assets/images/headofseb7a.png')),
             Padding(
               padding: const EdgeInsets.only(top: 100),
               child: GestureDetector(
@@ -63,7 +66,7 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
               height: 20,
             ),
             Text(
-              'no. of tasbeha',
+              AppLocalizations.of(context)!.no_sebha,
               style: Theme.of(context).textTheme.titleMedium,
             ),
             SizedBox(
@@ -91,13 +94,16 @@ class _SebhaTabState extends State<SebhaTab> with TickerProviderStateMixin {
                   bottomClick();
                   setState(() {});
                 },
-                child: Text(
-                  '${bottomName[index]}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium
-                      ?.copyWith(color: MyTheme.whiteColor),
-                )),
+                child: Text('${bottomName[index]}',
+                    style: provider.appTheme == ThemeMode.light
+                        ? Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: MyTheme.whiteColor)
+                        : Theme.of(context)
+                            .textTheme
+                            .titleMedium
+                            ?.copyWith(color: MyTheme.blackColor))),
           ],
         ),
       ),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami_project/MyTheme.dart';
 import 'package:islami_project/home/quran/sura_details.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_config_provider.dart';
 
 class ItemSuraName extends StatelessWidget {
   String name;
@@ -9,6 +13,7 @@ class ItemSuraName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(
@@ -18,7 +23,12 @@ class ItemSuraName extends StatelessWidget {
       },
       child: Text(
         '$name',
-        style: Theme.of(context).textTheme.titleSmall,
+        style: provider.appTheme == ThemeMode.light
+            ? Theme.of(context).textTheme.titleSmall
+            : Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(color: MyTheme.whiteColor),
         textAlign: TextAlign.center,
       ),
     );
